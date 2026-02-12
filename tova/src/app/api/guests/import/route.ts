@@ -5,7 +5,7 @@ import { parse } from 'papaparse'
 // Basic email validation
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<Response> {
   const supabase = await createClient()
   const {
     data: { user },
@@ -111,3 +111,4 @@ export async function POST(request: Request) {
     })
   })
 }
+
