@@ -3,8 +3,9 @@ import { NextResponse } from 'next/server'
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+   context: { params: Promise<{ id: string }> }
 ) {
+   const params = await context.params
   const supabase = await createClient()
   const {
     data: { user },
@@ -45,3 +46,4 @@ export async function PUT(
 
   return NextResponse.json(data)
 }
+
